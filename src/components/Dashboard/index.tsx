@@ -1,8 +1,6 @@
-// Arquivo: src/pages/Dashboard.tsx
-
 import React, { useEffect, useState } from "react";
 
-import { Container, TextField, MenuItem } from "@mui/material";
+import { Container, TextField, MenuItem, Grid } from "@mui/material";
 import { Invoice } from "../../models/Invoices";
 import { fetchInvoices } from "../../services/ApiService";
 import EnergyChart from "../EnergyChart";
@@ -25,7 +23,7 @@ const Dashboard: React.FC = () => {
   );
 
   return (
-    <Container>
+    <Grid xl={12} sm={12}>
       <TextField
         select
         label="Número do Cliente"
@@ -43,7 +41,7 @@ const Dashboard: React.FC = () => {
       </TextField>
       <EnergyChart data={filteredData} type="energy" />
       <EnergyChart data={filteredData} type="money" />
-    </Container>
+    </Grid>
   );
 };
 

@@ -9,6 +9,7 @@ interface EnergyChartProps {
 
 const EnergyChart: React.FC<EnergyChartProps> = ({ data, type }) => {
   const isEnergy = type === "energy";
+
   const series = [
     {
       name: isEnergy ? "Energia Elétrica (kWh)" : "Valores Monetários (R$)",
@@ -22,6 +23,8 @@ const EnergyChart: React.FC<EnergyChartProps> = ({ data, type }) => {
     },
   ];
 
+  const months = data.map((invoice) => invoice.referenceMonth);
+
   const options = {
     chart: {
       type: "bar",
@@ -31,7 +34,7 @@ const EnergyChart: React.FC<EnergyChartProps> = ({ data, type }) => {
       },
     },
     xaxis: {
-      categories: data.map((invoice) => invoice.referenceMonth),
+      categories: months,
       labels: {
         rotate: -45,
         rotateAlways: true,
@@ -51,7 +54,7 @@ const EnergyChart: React.FC<EnergyChartProps> = ({ data, type }) => {
       },
     },
     fill: {
-      colors: ["#0f4c81"],
+      colors: ["#024226"],
     },
     tooltip: {
       enabled: true,
