@@ -61,25 +61,22 @@ const EnergyChart: React.FC<EnergyChartProps> = ({ data, type }) => {
       theme: "dark",
       y: {
         formatter: function (value: any) {
-          return `${value} ${isEnergy ? "kWh" : "R$"}`;
+          return isEnergy ? `${value} kWh` : `R$ ${value}`;
         },
       },
       custom: function ({ series, seriesIndex, dataPointIndex, w }: any) {
         const invoice = data[dataPointIndex];
+        const date = new Date(invoice.createdAt).toLocaleDateString("pt-BR");
         return `<div class="apexcharts-tooltip-title" style="font-size: 14px;">${
-          w.globals.categoryLabels[dataPointIndex]
+          months[dataPointIndex]
         }</div>
                 <div style="font-size: 12px;">${
                   isEnergy ? "Energia Consumida: " : "Valor Total: "
-                }${series[seriesIndex][dataPointIndex]}${
-          isEnergy ? " kWh" : " R$"
-        }</div>
+                }R$ ${series[seriesIndex][dataPointIndex]}</div>
                 <div style="font-size: 12px;">Cliente: ${
                   invoice.customerNumber
                 }</div>
-                <div style="font-size: 12px;">Data da Fatura: ${
-                  invoice.createdAt.split("T")[0]
-                }</div>`;
+                <div style="font-size: 12px;">Atualizada em: ${date}</div>`;
       },
     },
     title: {
@@ -91,7 +88,6 @@ const EnergyChart: React.FC<EnergyChartProps> = ({ data, type }) => {
       },
     },
   };
-
   //@ts-ignore
   return <ReactApexChart options={options} series={series} type="bar" />;
 };
