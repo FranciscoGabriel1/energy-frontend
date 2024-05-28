@@ -71,8 +71,12 @@ const EnergyChart: React.FC<EnergyChartProps> = ({ data, type }) => {
           months[dataPointIndex]
         }</div>
                 <div style="font-size: 12px;">${
-                  isEnergy ? "Energia Consumida: " : "Valor Total: "
-                }R$ ${series[seriesIndex][dataPointIndex]}</div>
+                  isEnergy
+                    ? "Energia Consumida: " +
+                      series[seriesIndex][dataPointIndex] +
+                      " kWh"
+                    : "Valor Total: R$ " + series[seriesIndex][dataPointIndex]
+                }</div>
                 <div style="font-size: 12px;">Cliente: ${
                   invoice.customerNumber
                 }</div>
