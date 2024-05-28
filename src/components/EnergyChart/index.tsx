@@ -1,12 +1,10 @@
-// Arquivo: src/components/EnergyChart.tsx
-
 import React from "react";
 import ReactApexChart from "react-apexcharts";
 import { Invoice } from "../../models/Invoices";
 
 interface EnergyChartProps {
   data: Invoice[];
-  type: "energy" | "money"; // Adicionar propriedade para diferenciar o tipo de gráfico
+  type: "energy" | "money";
 }
 
 const EnergyChart: React.FC<EnergyChartProps> = ({ data, type }) => {
@@ -55,6 +53,32 @@ const EnergyChart: React.FC<EnergyChartProps> = ({ data, type }) => {
     fill: {
       colors: ["#0f4c81"],
     },
+    tooltip: {
+      enabled: true,
+      theme: "dark",
+      y: {
+        formatter: function (value: any) {
+          return `${value} ${isEnergy ? "kWh" : "R$"}`;
+        },
+      },
+      custom: function ({ series, seriesIndex, dataPointIndex, w }: any) {
+        const invoice = data[dataPointIndex];
+        return `<div class="apexcharts-tooltip-title" style="font-size: 14px;">${
+          w.globals.categoryLabels[dataPointIndex]
+        }</div>
+                <div style="font-size: 12px;">${
+                  isEnergy ? "Energia Consumida: " : "Valor Total: "
+                }${series[seriesIndex][dataPointIndex]}${
+          isEnergy ? " kWh" : " R$"
+        }</div>
+                <div style="font-size: 12px;">Cliente: ${
+                  invoice.customerNumber
+                }</div>
+                <div style="font-size: 12px;">Data da Fatura: ${
+                  invoice.createdAt.split("T")[0]
+                }</div>`;
+      },
+    },
     title: {
       text: isEnergy ? "Consumo de Energia Elétrica" : "Gastos Monetários",
       align: "center",
@@ -64,6 +88,7 @@ const EnergyChart: React.FC<EnergyChartProps> = ({ data, type }) => {
       },
     },
   };
+
   //@ts-ignore
   return <ReactApexChart options={options} series={series} type="bar" />;
 };
