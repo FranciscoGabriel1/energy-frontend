@@ -1,30 +1,44 @@
-# React + TypeScript + Vite
+# Energy Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este repositório contém o frontend de uma aplicação desenvolvida para visualizar e gerenciar dados de consumo de energia elétrica. O projeto foi construído utilizando React, TypeScript e Vite, com uma ênfase em desempenho e eficiência, e aproveita o Material UI para uma interface de usuário limpa e moderna.
 
-Currently, two official plugins are available:
+## Tecnologias Utilizadas
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **React**: Biblioteca JavaScript para construção de interfaces de usuário.
+- **TypeScript**: Superset de JavaScript que adiciona tipos estáticos.
+- **Material UI**: Sistema de design reactivo para um desenvolvimento ágil e consistente de interfaces.
+- **Vite**: Ferramenta de build que proporciona um ambiente de desenvolvimento mais rápido.
 
-## Expanding the ESLint configuration
+## Pré-requisitos
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Antes de iniciar, você precisará ter instalado em sua máquina as seguintes ferramentas:
+- [Node.js](https://nodejs.org/) (recomendado v14.x ou superior)
+- [npm](https://www.npmjs.com/)
 
-- Configure the top-level `parserOptions` property like this:
+## Instalação
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+Clone este repositório e acesse a pasta do projeto:
+
+```bash
+git clone https://github.com/FranciscoGabriel1/energy-frontend.git
+cd energy-frontend
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+Instale as dependências:
+```bash
+npm install
+```
+
+Executando o Projeto:
+```bash
+npm run dev
+```
+
+
+O backend do projeto está localizado em:
+```bash
+https://github.com/FranciscoGabriel1/energy-backend.git
+```
+
+## Demonstração do fluxo
+![lumi](https://github.com/FranciscoGabriel1/energy-frontend/assets/46074137/f4628062-46c5-4d10-adf9-b761d8dd0ba7)
